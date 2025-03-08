@@ -69,3 +69,68 @@
     }
   }
   
+
+  /* Default (Light Mode) */
+#leftMenu {
+  background-color: #dff0d8; /* Light green */
+  color: black;
+}
+
+#leftMenu .bg-light {
+  background-color: white !important;
+  color: black;
+}
+
+#leftMenu .cursor-pointer {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#leftMenu .cursor-pointer:hover {
+  background-color: #c3e6cb;
+}
+
+/* Dark Mode */
+.dark-mode #leftMenu {
+  background-color: #232323; /* Dark background */
+  color: white;
+}
+
+.dark-mode #leftMenu .bg-light {
+  background-color: #333 !important;
+  color: white;
+}
+
+.dark-mode #leftMenu .cursor-pointer:hover {
+  background-color: #444;
+}
+
+/* Profile Section */
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.username {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* Chart Section */
+.dark-mode .chart-section h5 {
+  color: rgb(0, 0, 0);
+}
+
+/* Logout Button */
+.dark-mode .btn-danger {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.dark-mode .btn-danger:hover {
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+

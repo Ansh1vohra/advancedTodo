@@ -11,3 +11,53 @@
     border: none;
     fill: none;
 }
+
+/* Default (Light Mode) */
+.taskip {
+    padding: 0.65rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: black; /* Text color in light mode */
+}
+
+.taskip:focus, .taskip:active {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.backg{
+    background-color: #dff0d8;
+}
+
+/* Dark Mode */
+.dark-mode .taskip {
+    color: white; /* White text in dark mode */
+}
+
+.dark-mode .backg{
+    background-color: #232323;
+}
+
+.dark-mode .bg-success-subtle {
+    background-color: #252525 !important; /* Dark background for input container */
+    color: white; /* Text color */
+}
+
+.dark-mode .btn-success {
+    background-color: #2ecc71 !important; /* Brighter green for better contrast */
+    border-color: #27ae60;
+}
+
+.dark-mode .btn-success:hover {
+    background-color: #27ae60 !important;
+}
+
+.dark-mode .cursor-pointer svg {
+    color: #bbb; /* Icons color in dark mode */
+}
+
+.dark-mode .cursor-pointer:hover svg {
+    color: white; /* Hover effect on icons */
+}

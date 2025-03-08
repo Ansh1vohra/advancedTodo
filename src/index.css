@@ -29,3 +29,29 @@ body.dark-mode {
   cursor: pointer;
 }
 
+
+/* Light Mode (default) */
+.task-list-container {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Dark Mode */
+.dark-mode .task-list-container {
+  background-color: #242424;
+  color: white;
+}
+
+/* List item styles */
+.dark-mode .list-group-item {
+  background-color: #222;  /* Dark gray */
+  color: white;
+  border-color: #444; /* Slightly lighter border */
+}
+
+.dark-mode .list-group-item .text-secondary {
+  color: #bbb !important; /* Adjust star icon color */
+}
+

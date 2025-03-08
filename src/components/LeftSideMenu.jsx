@@ -9,7 +9,7 @@ export default function LeftSideMenu({ setIsMenuOpen }) {
   const dispatch = useDispatch();
 
   return (
-    <div id="leftMenu" className="p-4 rounded bg-success-subtle text-black">
+    <div id="leftMenu" className="p-4 rounded">
       <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
         <AiOutlineClose size={20} />
       </button>

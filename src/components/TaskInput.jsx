@@ -20,7 +20,7 @@ const TaskInput = () => {
       <div>
         <p>To Do</p>
         <hr />
-        <div className="bg-success-subtle p-3 rounded mb-3">
+        <div className="backg p-3 rounded mb-3">
           <input
             type="text"
             className="taskip mb-2"
@@ -29,7 +29,7 @@ const TaskInput = () => {
             onChange={(e) => setTask(e.target.value)}
           />
           <br />
-          <div className="d-flex justify-content-between align-items-center text-black">
+          <div className="d-flex justify-content-between align-items-center">
             <ul className="d-flex gap-2 list-unstyled p-2">
               <li className="cursor-pointer">
                 <MdNotifications size={24} title="Reminder" />
