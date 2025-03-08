@@ -1,29 +1,49 @@
-import { logout } from "../redux/authSlice"
-import { useDispatch } from "react-redux"
-import "./LeftSideMenu.css"
+import { logout } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
+import "./LeftSideMenu.css";
+import userImage from "../assets/user.jpg"; // Replace with your image path
+import TaskChart from "../chart/TaskChart"; // ✅ Import TaskChart
 
-export default function LeftSideMenu({setIsMenuOpen}) {
+export default function LeftSideMenu({ setIsMenuOpen }) {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <div id="leftMenu" className="p-4 rounded bg-success-subtle text-black">
-        <button className="bg-none border-none" onClick={()=>{setIsMenuOpen(false)}}><AiOutlineClose size={20} /></button>
-        <p>Hello User!</p>
-        <div className="bg-light rounded">
-          <ul className="list-unstyled mt-3 d-flex flex-column gap-2">
-            <li className="cursor-pointer">All Tasks</li>
-            <li className="cursor-pointer">Today</li>
-            <li className="cursor-pointer">Important</li>
-            <li className="cursor-pointer">Planned</li>
-            <li className="cursor-pointer">Assigned to me</li>
-          </ul>
-        </div>
-        <button className="btn btn-danger mt-4" onClick={() => dispatch(logout())}>
-          Log-out
-        </button>
+    <div id="leftMenu" className="p-4 rounded bg-success-subtle text-black">
+      <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
+        <AiOutlineClose size={20} />
+      </button>
+
+      {/* User Profile */}
+      <div className="profile-section text-center">
+        <img src={userImage} alt="User" className="profile-img" />
+        <p className="username">Hey, ABCD</p>
       </div>
-    </>
-  )
+
+      {/* Menu Options */}
+      <div className="bg-light rounded">
+        <ul className="list-unstyled mt-3 d-flex flex-column gap-2">
+          <li className="cursor-pointer"><i className="bi bi-list-task"></i> All Tasks</li>
+          <li className="cursor-pointer"><i className="bi bi-calendar-day"></i> Today</li>
+          <li className="cursor-pointer"><i className="bi bi-star"></i> Important</li>
+          <li className="cursor-pointer"><i className="bi bi-journal"></i> Planned</li>
+          <li className="cursor-pointer"><i className="bi bi-person-check"></i> Assigned to me</li>
+        </ul>
+      </div>
+
+      {/* Add List Option */}
+      <div className="add-list">+ Add list</div>
+
+      {/* Chart Section */}
+      <div className="chart-section text-center">
+        <h5>Task Progress</h5>
+        <TaskChart /> {/* ✅ Replace Pie chart with TaskChart */}
+      </div>
+
+      {/* Logout Button */}
+      <button className="btn btn-danger mt-4" onClick={() => dispatch(logout())}>
+        Log-out
+      </button>
+    </div>
+  );
 }
