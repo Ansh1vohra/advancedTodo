@@ -1,0 +1,13 @@
+.taskip{
+    padding: 0.65rem;
+    width: 100%;
+    fill: none;
+    background: transparent;
+    border: none;
+}
+
+.taskip:focus, .taskip:active {
+    background: transparent;
+    border: none;
+    fill: none;
+}

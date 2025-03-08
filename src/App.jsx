@@ -1,26 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 import Header from "./components/Header";
-import TaskInput from "./components/TaskInput";
-import TaskList from "./components/TaskList";
-import Auth from "./components/Auth";
+import Task from './pages/Task';
+import Auth from "./pages/Auth";
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const navigate = useNavigate();
 
-  // Redirect to home if already authenticated
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && window.location.pathname !== "/home") {
       navigate("/home");
     }
   }, [isAuthenticated, navigate]);
 
   return (
     <>
-      <Header />
+      <Header setIsMenuOpen={setIsMenuOpen} />
       <div className='p-2'>
         <Routes>
           {/* Login Page */}
@@ -29,16 +28,7 @@ function App() {
           {/* Home Page (Protected Route) */}
           <Route
             path="/home"
-            element={
-              isAuthenticated ? (
-                <>
-                  <TaskInput />
-                  <TaskList />
-                </>
-              ) : (
-                <Navigate to="/" />
-              )
-            }
+            element={isAuthenticated ? <Task isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} /> : <Navigate to="/" />}
           />
         </Routes>
       </div>
