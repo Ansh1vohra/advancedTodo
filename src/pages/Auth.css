@@ -1,9 +1,65 @@
-.wisd{
+.wisd {
     width: 40%;
+    background-color: #dff0d8; /* Light green background */
+    color: black; /* Default text color */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
-@media screen and (max-width:768px) {
-    .wisd{
+.wisd h3 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.wisd p {
+    font-size: 0.9rem;
+    text-align: center;
+    color: #555;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+.btn-success {
+    font-weight: bold;
+}
+
+/* Dark Mode */
+.dark-mode .wisd {
+    background-color: #252525 !important; /* Dark background */
+    color: white; /* White text */
+}
+
+.dark-mode .wisd h3{
+    color:#bbb;
+}
+
+.dark-mode .wisd p {
+    color: #bbb; /* Slightly lighter text for contrast */
+}
+
+.dark-mode .form-control {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark-mode .form-control::placeholder {
+    color: #999;
+}
+
+.dark-mode .btn-success {
+    background-color: #2ecc71 !important;
+    border-color: #27ae60;
+}
+
+.dark-mode .btn-success:hover {
+    background-color: #27ae60 !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .wisd {
         width: 100%;
     }
 }
