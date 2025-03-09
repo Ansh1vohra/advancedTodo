@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeTask, toggleComplete } from "../redux/taskSlice";
-import { MdStarBorder, MdStar } from 'react-icons/md';
+import { MdStarBorder, MdStar } from "react-icons/md";
 
-const TaskList = () => {
+const TaskList = ({ searchQuery }) => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
 
   // Separate tasks into pending and completed
-  const pendingTasks = tasks.filter(task => !task.completed);
-  const completedTasks = tasks.filter(task => task.completed);
+  const pendingTasks = tasks.filter((task) => !task.completed);
+  const completedTasks = tasks.filter((task) => task.completed);
 
-  // Create a state object to store the "clicked" state for each task
+  // Filter tasks based on search query
+  const filteredPendingTasks = pendingTasks.filter((task) =>
+    task.text.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const filteredCompletedTasks = completedTasks.filter((task) =>
+    task.text.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Star click state
   const [clickedTasks, setClickedTasks] = useState({});
 
   const handleClick = (taskId) => {
-    setClickedTasks(prevState => ({
+    setClickedTasks((prevState) => ({
       ...prevState,
       [taskId]: !prevState[taskId], // Toggle the star state for the specific task
     }));
@@ -25,7 +33,7 @@ const TaskList = () => {
     <div className="task-list-container">
       {/* Pending Tasks */}
       <ul className="list-group mb-4">
-        {pendingTasks.map((task) => (
+        {filteredPendingTasks.map((task) => (
           <li
             key={task.id}
             className="list-group-item d-flex align-items-center justify-content-between p-3 m-2 rounded border-bottom"
@@ -36,11 +44,10 @@ const TaskList = () => {
             />
             <span className="flex-grow-1 ms-2">{task.text}</span>
             <div onClick={() => handleClick(task.id)} className="cursor-pointer">
-              {/* Render filled star if clicked, otherwise render empty star */}
               {clickedTasks[task.id] ? (
-                <MdStar size={24} className="text-yellow-500" /> // Yellow color when filled
+                <MdStar size={24} className="text-yellow-500" />
               ) : (
-                <MdStarBorder size={24} className="text-secondary" /> // Secondary color when empty
+                <MdStarBorder size={24} className="text-secondary" />
               )}
             </div>
           </li>
@@ -50,7 +57,7 @@ const TaskList = () => {
       {/* Completed Tasks */}
       <ul className="list-group">
         <p className="p-2">Completed Tasks:</p>
-        {completedTasks.map((task) => (
+        {filteredCompletedTasks.map((task) => (
           <li
             key={task.id}
             className="list-group-item d-flex align-items-center justify-content-between p-3 rounded border-bottom text-decoration-line-through text-muted"

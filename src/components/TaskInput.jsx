@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/taskSlice";
 import { v4 as uuidv4 } from "uuid";
-import { MdNotifications, MdRestore, MdCalendarToday } from "react-icons/md";
+import { MdArrowDropDown,MdNotifications, MdRestore, MdCalendarToday } from "react-icons/md";
 import "./TaskInput.css";
 
 const TaskInput = () => {
@@ -18,7 +18,10 @@ const TaskInput = () => {
   return (
     <>
       <div>
-        <p>To Do</p>
+        <div className="d-flex gap-2 align-items-center">
+          <span>To Do</span>
+          <MdArrowDropDown />
+        </div>
         <hr />
         <div className="backg p-3 rounded mb-3">
           <input

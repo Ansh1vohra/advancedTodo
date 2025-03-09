@@ -8,6 +8,7 @@ import Auth from "./pages/Auth";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [searchQuery, setSearchQuery] = useState("");
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Header setIsMenuOpen={setIsMenuOpen} />
+      <Header setIsMenuOpen={setIsMenuOpen}  setSearchQuery={setSearchQuery} />
       <div className='p-2'>
         <Routes>
           {/* Login Page */}
@@ -28,7 +29,7 @@ function App() {
           {/* Home Page (Protected Route) */}
           <Route
             path="/home"
-            element={isAuthenticated ? <Task isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} /> : <Navigate to="/" />}
+            element={isAuthenticated ? <Task isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} searchQuery={searchQuery} /> : <Navigate to="/" />}
           />
         </Routes>
       </div>
