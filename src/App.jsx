@@ -13,24 +13,28 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated && window.location.pathname !== "/home") {
+    if (isAuthenticated && window.location.pathname === "/") {
       navigate("/home");
     }
   }, [isAuthenticated, navigate]);
 
   return (
     <>
-      <Header setIsMenuOpen={setIsMenuOpen}  setSearchQuery={setSearchQuery} />
+      <Header setIsMenuOpen={setIsMenuOpen} setSearchQuery={setSearchQuery} />
       <div className='p-2'>
         <Routes>
           {/* Login Page */}
-          <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <Auth />} />
+          <Route path="/" element={<Navigate to={isAuthenticated ? "/home" : "/login"} />} />
+          <Route path="/login" element={<Auth />} />
 
           {/* Home Page (Protected Route) */}
-          <Route
-            path="/home"
-            element={isAuthenticated ? <Task isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} searchQuery={searchQuery} /> : <Navigate to="/" />}
+          <Route 
+            path="/home" 
+            element={isAuthenticated ? <Task isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} searchQuery={searchQuery} /> : <Navigate to="/login" />} 
           />
+
+          {/* 404 Handling */}
+          <Route path="*" element={<Navigate to={isAuthenticated ? "/home" : "/login"} />} />
         </Routes>
       </div>
     </>
