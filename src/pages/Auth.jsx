@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { login} from "../redux/authSlice";
 import "./Auth.css";
 
-const Auth = () => {
+const Auth = ({setIsLoggedIn}) => {
   const dispatch = useDispatch();
 
   return (
@@ -13,7 +13,11 @@ const Auth = () => {
         <p>(Enter anything in username and password as of now.)</p>
         <input className="form-control p-2" type="text" name="username" id="uname" placeholder="Enter User Name:" />
         <input className="form-control p-2" type="text" name="password" id="password" placeholder="Enter Password:" />
-        <button className="btn btn-success p-2" onClick={() => dispatch(login())}>
+        <button className="btn btn-success p-2" onClick={() =>{
+          setIsLoggedIn(true);
+          dispatch(login())
+        }
+           }>
           Login
         </button>
       </form>

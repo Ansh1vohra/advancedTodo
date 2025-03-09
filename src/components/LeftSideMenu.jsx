@@ -4,8 +4,10 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./LeftSideMenu.css";
 import userImage from "../assets/user.jpg"; // Replace with your image path
 import TaskChart from "../chart/TaskChart"; // ✅ Import TaskChart
+import { useNavigate } from "react-router";
 
-export default function LeftSideMenu({ setIsMenuOpen }) {
+export default function LeftSideMenu({ setIsMenuOpen, setIsLoggedIn }) {
+  const nav = useNavigate();
   const dispatch = useDispatch();
 
   return (
@@ -41,7 +43,11 @@ export default function LeftSideMenu({ setIsMenuOpen }) {
       </div>
 
       {/* Logout Button */}
-      <button className="btn btn-danger mt-4" onClick={() => dispatch(logout())}>
+      <button className="btn btn-danger mt-4" onClick={() => {
+        setIsLoggedIn(false);
+        dispatch(logout());
+        nav("/")
+      }}>
         Log-out
       </button>
     </div>
